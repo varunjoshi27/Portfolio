@@ -127,26 +127,57 @@ function scrollToTop() {
 }
 
 // Form submission
-function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-    
-    // Simple form validation
-    if (!name || !email || !subject || !message) {
-        alert('Please fill in all fields');
-        return;
-    }
-    
-    // In a real-world scenario, you would send this data to a server
-    // For now, we'll just simulate a successful submission
-    alert('Message sent successfully!');
-    contactForm.reset();
-}
+document.addEventListener('DOMContentLoaded', function () {
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        // Simple form validation
+        if (!name || !email || !subject || !message) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        // Create FormData object
+        const formData = new FormData(contactForm);
+
+        // Submit form data to Formspree
+        fetch('https://formspree.io/f/xdkggdbb', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    // Show success message
+                    formStatus.style.display = 'block';
+                    formStatus.innerHTML = '<div style="color: green; padding: 15px; background-color: #e8f5e9; border-radius: 5px;">Message sent successfully! Thank you for contacting me.</div>';
+                    contactForm.reset();
+                } else {
+                    // Show error message
+                    formStatus.style.display = 'block';
+                    formStatus.innerHTML = '<div style="color: red; padding: 15px; background-color: #ffebee; border-radius: 5px;">There was a problem sending your message. Please try again.</div>';
+                }
+            })
+            .catch(error => {
+                // Show error message
+                formStatus.style.display = 'block';
+                formStatus.innerHTML = '<div style="color: red; padding: 15px; background-color: #ffebee; border-radius: 5px;">There was a problem sending your message. Please try again.</div>';
+                console.error('Error:', error);
+            });
+    });
+});
 
 // Event Listeners
 window.addEventListener('load', checkTheme);
