@@ -710,6 +710,23 @@ img {
     background-color: var(--bg-secondary);
 }
 
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.section-header p {
+    color: var(--text-light);
+    font-size: 1.6rem;
+}
+
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -743,6 +760,29 @@ img {
     margin-bottom: 0;
 }
 
+.schedule-meeting {
+    margin: 2rem 0;
+}
+
+.schedule-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 2.4rem;
+    background-color: goldenrod;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1.6rem;
+    
+}
+
+
+.schedule-btn i {
+    font-size: 1.6rem;
+}
+
 .social-links {
     display: flex;
     gap: 1.5rem;
@@ -773,6 +813,29 @@ img {
     box-shadow: 0 0.5rem 1.5rem var(--shadow-color);
 }
 
+.form-header {
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.form-header h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+}
+
+.form-header p {
+    font-size: 1.4rem;
+    color: var(--text-light);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
 .form-group {
     margin-bottom: 2rem;
 }
@@ -800,6 +863,62 @@ img {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
+.btn.primary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 2.4rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn.primary-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-0.2rem);
+}
+
+.btn.primary-btn i {
+    font-size: 1.4rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .contact-form {
+        padding: 2rem;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .schedule-btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 /* ===== FOOTER ===== */
@@ -992,6 +1111,93 @@ footer p {
     }
     
     .tools-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== SERVICES SECTION ===== */
+.services {
+    background-color: var(--bg-secondary);
+    position: relative;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    gap: 3rem;
+}
+
+.service-card {
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 0.5rem 1.5rem var(--shadow-color);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-card:hover {
+    transform: translateY(-0.8rem);
+    box-shadow: 0 1rem 2rem var(--shadow-color);
+}
+
+.service-icon {
+    width: 8rem;
+    height: 8rem;
+    background-color: rgba(67, 97, 238, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    transition: var(--transition);
+}
+
+.service-card:hover .service-icon {
+    background-color: var(--primary-color);
+}
+
+.service-icon i {
+    font-size: 3.2rem;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.service-card:hover .service-icon i {
+    color: white;
+}
+
+.service-card h3 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.service-card p {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+/* Media Queries for Services Section */
+@media screen and (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .services-grid {
         grid-template-columns: 1fr;
     }
 }
