@@ -11,7 +11,7 @@ const animatedElements = document.querySelectorAll('[data-animation]');
 
 // Typing Animation
 const typingText = document.getElementById('typing-text');
-const words = ['Frontend Developer', 'Web Developer', 'UI/UX Enthusiast'];
+const words = ['Frontend Developer', 'Web Developer', 'UI/UX Enthusiast', 'Code and Design Enthusiast'];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -204,4 +204,3 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }, 300);
 });
-
