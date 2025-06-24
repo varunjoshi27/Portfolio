@@ -73,7 +73,7 @@ function toggleMobileNav() {
     hamburger.classList.toggle('active');
     navLinks.classList.toggle('active');
 }
-
+ 
 // Close mobile nav when clicking a link
 function closeMobileNav() {
     hamburger.classList.remove('active');
